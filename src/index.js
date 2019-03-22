@@ -46,14 +46,19 @@ module.exports = function solveSudoku(matrix) {
 };
 
 const chunkIntoMatrix = (arr) => {
-  const iter = (size, acc) => {
-    if (size >= arr.length) {
-      return acc;
-    }
-    const newAcc = [...acc, arr.slice(size, size + 9)];
-    return iter(size + 9, newAcc);
-  };
-  return iter(0, []);
+  // const iter = (size, acc) => {
+  //   if (size >= arr.length) {
+  //     return acc;
+  //   }
+  //   const newAcc = [...acc, arr.slice(size, size + 9)];
+  //   return iter(size + 9, newAcc);
+  // };
+  // return iter(0, []);
+  const result = [];
+  for (let i = 0; i < arr.length; i += 9) {
+    result.push(arr.slice(i, i + 9));
+  }
+  return result;
 };
 
 const defineGridIndexes = (row, col) => {
